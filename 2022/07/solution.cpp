@@ -5,7 +5,7 @@
 #include <map>
 #include <sstream>
 
-void up(std::map<std::string, unsigned int> &sizePerDirectory, std::vector<std::string> &currentPath)
+void up(std::unordered_map<std::string, unsigned int> &sizePerDirectory, std::vector<std::string> &currentPath)
 {
     // Save the size of the directory
     sizePerDirectory[currentPath[currentPath.size() - 2]] += sizePerDirectory[currentPath[currentPath.size() - 1]];
@@ -17,7 +17,7 @@ int main()
 {
     std::ifstream input("input.txt");
     std::vector<std::string> currentPath; // Contains the path of the current directory; the last one is the current (the first is "/")
-    std::map<std::string, unsigned int> sizePerDirectory; // Key: directory, value: size
+    std::unordered_map<std::string, unsigned int> sizePerDirectory; // Key: directory, value: size
     
     constexpr int LIMIT = 100000, TOTAL = 70000000, MIN_REQUIRED = 30000000;
 

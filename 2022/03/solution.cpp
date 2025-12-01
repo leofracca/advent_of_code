@@ -11,7 +11,7 @@ int main()
     int sumTask1 = 0;
     int sumTask2 = 0;
 
-    std::map<char, int> priorities;
+    std::unordered_map<char, int> priorities;
     for (int i = 0; i < 26; i++) 
     {
         priorities['a' + i] = i + 1;

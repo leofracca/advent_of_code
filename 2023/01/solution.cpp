@@ -35,7 +35,7 @@ int solution1(std::ifstream &input)
 
 int solution2(std::ifstream &input)
 {
-    std::map<std::string, int> digits = {
+    std::unordered_map<std::string, int> digits = {
         {"one", 1},
         {"two", 2},
         {"three", 3},
