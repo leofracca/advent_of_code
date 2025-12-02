@@ -28,7 +28,7 @@ int solution1(const std::vector<int>& codes)
     for (const auto& code: codes)
     {
         currentValue += code;
-        currentValue = ((currentValue % 100) + 100) % 100;;
+        currentValue = ((currentValue % 100) + 100) % 100;
 
         if (currentValue == 0)
             ans++;
@@ -45,22 +45,16 @@ int solution2(const std::vector<int>& codes)
     for (const auto& code: codes)
     {
         // Right
-        if (code > 0)
+        if (code > 0 && currentValue + code >= 100)
         {
-            if (currentValue + code >= 100)
-            {
-                ans += (currentValue + code) / 100;
-                // std::cout << "Overflowing right: " << currentValue << " + " << code << " -> " << (currentValue + code) / 100 << std::endl;
-            }
+            ans += (currentValue + code) / 100;
+            // std::cout << "Overflowing right: " << currentValue << " + " << code << " -> " << (currentValue + code) / 100 << std::endl;
         }
         // Left starting from non-zero
-        else if (currentValue != 0)
+        else if (currentValue != 0 && currentValue + code <= 0)
         {
-            if (currentValue + code <= 0)
-            {
-                ans += 1 + (std::abs(currentValue + code) / 100);
-                // std::cout << "Overflowing left: " << currentValue << " + " << code << " -> " << (std::abs(currentValue + code) / 100) + 1 << std::endl;
-            }
+            ans += 1 + (std::abs(currentValue + code) / 100);
+            // std::cout << "Overflowing left: " << currentValue << " + " << code << " -> " << (std::abs(currentValue + code) / 100) + 1 << std::endl;
         }
         // Left starting from zero
         else if (code <= -100)
